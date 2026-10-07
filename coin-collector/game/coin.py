@@ -5,14 +5,21 @@ bounding square around it.
 
 import pygame
 
+COIN_TYPES = {
+    "bronze": {"value": 1, "color": (205, 127, 50)},
+    "silver": {"value": 3, "color": (200, 200, 210)},
+    "gold":   {"value": 5, "color": (255, 215, 0)},
+}
+
 
 class Coin:
-    def __init__(self, x, y, radius=12, value=1, color=(230, 190, 60)):
+    def __init__(self, x, y, radius=12, coin_type="bronze"):
         self.x = x
         self.y = y
         self.radius = radius
-        self.value = value
-        self.color = color
+        self.coin_type = coin_type
+        self.value = COIN_TYPES[coin_type]["value"]
+        self.color = COIN_TYPES[coin_type]["color"]
 
     def get_rect(self):
         return pygame.Rect(
